@@ -19,10 +19,72 @@ namespace SchoolPractice
             NumberOfCredits = numberOfCredits;
             Gpa = gpa;
         }
-        public Student(string name, int studentId): this(name,studentId, 0, 0) { }
-        public Student(string name): this(name,nextStudentId)
+        public Student(string name, int studentId) : this(name, studentId, 0, 0) { }
+        public Student(string name) : this(name, nextStudentId)
         {
             nextStudentId++;
         }
+        public string StudentInfo()
+        {
+            return (Name + " has a GPA of: " + Gpa);
+        }
+        public void AddGrade(int courseCredits, double grade)
+        {
+            double totalQualityScore = Gpa * NumberOfCredits;
+            totalQualityScore += courseCredits * grade;
+            NumberOfCredits += courseCredits;
+            Gpa = totalQualityScore / NumberOfCredits;
+        }
+        public string GetGradeLevel(int credits)
+        {
+            if (credits <= 29)
+            {
+                return "freshman";
+
+            }
+            else if (credits <= 59)
+            {
+                return "sophomore";
+            }
+            else if (credits <= 89)
+            {
+                return "junior";
+            }
+            else
+            {
+                return "senior";
+            }
+        }
+        public override string ToString()
+        {
+            return Name + " (Credits: " + NumberOfCredits + " , GPA: " + Gpa + ")";
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == this)
+            {
+                return true;
+            }
+            if (obj == null)
+            {
+                return false;
+            }
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            Student studentObj = obj as Student;
+            return StudentId == studentObj.StudentId;
+        }
+
+            public override int GetHashCode()
+        {
+            return StudentId;
+        }
+
     }
-}
+  
+    }
+

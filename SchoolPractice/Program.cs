@@ -11,6 +11,12 @@ namespace SchoolPractice
             Console.WriteLine("The Student class works! " + chamane.Name + " is a student!");
             Teacher scott = new Teacher("Scott", "Kuhl", "C#", 5);
             Console.WriteLine("The Teacher class works! " + scott.FirstName + " is a teacher!");
+            Console.WriteLine(chamane);
+            chamane.AddGrade(12, 3.5);
+            Console.WriteLine(chamane);
+            chamane.AddGrade(25, 3.8);
+            Console.WriteLine(chamane);
+
         }
     }
 }
